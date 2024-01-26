@@ -357,6 +357,7 @@ h3 {
   border: 1px solid #4d3d30;
   border-radius: 100%;
   pointer-events: none;
+  display: none;
 }
 .mqcsr span {
   width: 100%;

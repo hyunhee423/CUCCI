@@ -163,22 +163,22 @@ footBg.to('.footer .bg-area>img',{scale:1 ,stagger:0.1},'a')
 
   var swiper = new Swiper('.arrivals-cont', {
     // touchRatio:0,
-    simulateTouch:false,
-    grabCursor:false,
+    simulateTouch:true,
+    grabCursor:true,
     slidesPerView:"auto",
     spaceBetween:30,
     loop:true,
     autoplay : {
       delay:0,
     },
-    speed:2000,
+    speed:3000,
   });
 
 
   gsap.to('.arrivals-area .swiper',{
     scrollTrigger: {
       trigger: '.arrivals-area',
-      start: "0% 100%",
+      start: "center center",
       end: "100% 0%",
       scrub:1,
       markers:true,
@@ -187,26 +187,27 @@ footBg.to('.footer .bg-area>img',{scale:1 ,stagger:0.1},'a')
   })
 
 
-  const specialSection = document.querySelector('.sc-arrivals');
-  const cursor = document.querySelector('.mqcsr');
+    // 특정 섹션에서만 이벤트 동작
+    const specialSection = document.querySelector('.arrivals-area');
+    const cursor = document.querySelector('.mqcsr');
 
-  specialSection.addEventListener('mouseenter', function() {
-    cursor.style.display = 'block'; // 섹션에 진입하면 커서 표시
-  });
-
-  specialSection.addEventListener('mouseleave', function() {
-    cursor.style.display = 'none'; // 섹션을 나가면 커서 숨김
-  });
-
-  specialSection.addEventListener('mousemove', function(e) {
-    xVal = e.clientX;
-    yVal = e.clientY;
-
-    gsap.to(cursor, {
-      x: xVal,
-      y: yVal
+    // 특정 섹션에 진입했을 때 커서 나타나게 함
+    specialSection.addEventListener('mouseenter', function() {
+      gsap.to(cursor, { duration: 0.3, ease: "power3.out", display: 'block', rotation: 0, scale: 1 });
     });
-  });
+
+    // 특정 섹션을 나갔을 때 커서 숨김
+    specialSection.addEventListener('mouseleave', function() {
+      gsap.to(cursor, { duration: 0.3, ease: "power3.in", display: 'none', rotation: 360, scale: 0.5 });
+    });
+
+    // 커서 위치 및 애니메이션 설정
+    specialSection.addEventListener('mousemove', function(e) {
+      xVal = e.clientX;
+      yVal = e.clientY;
+
+      gsap.to(cursor, { duration: 0.3, x: xVal, y: yVal });
+    });
 
 
   document.querySelectorAll('.footer .menu-list li>a').forEach(button => button.innerHTML = '<div><span>' + button.textContent.trim().split('').join('</span><span>') + '</span></div>');
