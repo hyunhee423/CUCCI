@@ -45,7 +45,7 @@ visualCt = gsap.timeline({
     start: "0% 50%",
     end: "100% 100%",
     scrub:1,
-    markers:true,
+    // markers:true,
   },
   
 })
@@ -63,7 +63,7 @@ infoCt = gsap.timeline({
     start: "0% 100%",
     end: "100% 100%",
     scrub:1,
-    markers:true,
+    // markers:true,
   },
   
 })
@@ -111,7 +111,7 @@ descBg = gsap.timeline({
     start: "0% 100%",
     end: "100% 100%",
     scrub:1,
-    markers:true,
+    // markers:true,
   },
   
 })
@@ -125,7 +125,7 @@ brieFi = gsap.timeline({
     start: "0% 100%",
     end: "100% 100%",
     scrub:1,
-    markers:true,
+    // markers:true,
   },
   
 })
@@ -140,7 +140,7 @@ contBx = gsap.timeline({
     start: "0% 50%",
     end: "100% 100%",
     scrub:1,
-    markers:true,
+    // markers:true,
   },
   
 })
@@ -154,7 +154,7 @@ footBg = gsap.timeline({
     start: "0% 100%",
     end: "100% 100%",
     scrub:1,
-    markers:true,
+    // markers:true,
   },
   
 })
@@ -181,7 +181,7 @@ footBg.to('.footer .bg-area>img',{scale:1 ,stagger:0.1},'a')
       start: "center center",
       end: "100% 0%",
       scrub:1,
-      markers:true,
+      // markers:true,
     },
     xPercent:-50
   })
