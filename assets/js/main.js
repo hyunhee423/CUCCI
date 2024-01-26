@@ -36,6 +36,14 @@ $('[data-text]').each(function(i,el){
 
 
 gsap.set('.visual-main .up-trigger',{
+  "(max-width: 1024px)": function () {
+    gsap.to(".up-trigger", {
+      scrollTrigger: {
+        trigger: ".visual-main",
+        toggleActions: "play none",
+      },
+    });
+  },
   yPercent: 0, stagger:0.1
 })
 
@@ -87,9 +95,25 @@ ScrollTrigger.matchMedia({
         scrub:1,
         start:'center center',
         end: '300%', //뷰포트 높이으ㅣ 300% -> 숫자가 클수록 느려진다.
-      }
+      },
+      
     })
-  }
+  },
+//   '(max-width:767px)':function(){
+//     // 가로 스크롤
+//     let list = gsap.utils.toArray('.sc-category .category-menu .right');
+//     let scollTween = gsap.to(list,{
+//       yPercent: -50 * (list.length - 1), //원래 리시트의 갯수보다 1을 빼서 길이를 구한 후 에 가로로 이동
+//       ease:'none',
+//       scrollTrigger:{
+//         trigger:'.sc-category',
+//         pin:true,
+//         scrub:1,
+//         start:'center center',
+//         end: '300%', //뷰포트 높이으ㅣ 300% -> 숫자가 클수록 느려진다.
+//       }
+// })
+// }
 })
 
 gsap.to('.sc-category .item .bottom img',{
@@ -140,7 +164,6 @@ contBx = gsap.timeline({
     start: "0% 50%",
     end: "100% 100%",
     scrub:1,
-    // markers:true,
   },
   
 })

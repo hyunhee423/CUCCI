@@ -50,6 +50,9 @@ h3 {
     color: #4d3d30;
     letter-spacing: -.01em;
     font-size: max(30px, 4.8rem);
+    @include mobile{
+        font-size: 30px;
+    }
 }
 
 .btn-link {
@@ -80,6 +83,10 @@ h3 {
     &:hover span.txt::after{
         top: 0;
     }
+    @include mobile{
+    padding:5px;
+    font-size: 14px;
+    }
 
     span.txt{
         overflow: hidden;
@@ -106,7 +113,6 @@ h3 {
 
     .btn-svg {
         background: #4d3d30;
-
     }
 }
 }
@@ -122,11 +128,15 @@ h3 {
     overflow: hidden;
     background: #f4f0ea;
     border-radius: 40px;
+    @include mobile{
+        width: 20px;
+        height: 20px;
+    }
 
     svg {
         width: 19px;
         height: 19px;
-        transition: transform .85s var(--ease-out-expo);
+        transition: transform .85s;
     }
 }
 

@@ -13,6 +13,7 @@
         align-items: center;
         display: flex;
         justify-content: center;
+
         .logo {
             display: flex;
             align-items: center;
@@ -28,17 +29,17 @@
         }
 
         .menu-btn {
-            text-transform: uppercase;
             padding: 0;
+            text-transform: uppercase;
 
             &>span {
                 display: flex;
                 align-items: center;
-                gap: max(1.1rem, 10px);
+                gap: max(1.5rem, 10px);
             }
 
             .toggle {
-                width: max(2.5rem, 20px);
+                width: max(1.5rem, 20px);
                 height: max(0.8rem, 8px);
                 display: flex;
                 flex-direction: column;
@@ -51,32 +52,36 @@
                     background: #4d3d30;
                     position: relative;
                     will-change: transform;
-                    transition: trasform .3s;
+
                     &:first-child.on {
                         transform: rotate(-45deg);
-                        top: max(0.35rem, 3px);
+                        top: max(0.5rem, 3px);
                         left: max(0.35rem, 3px);
                     }
-    
+
                     &:last-child.on {
                         transform: rotate(45deg);
                         top: min(-0.35rem, -3px);
                         left: max(0.35rem, 3px);
                     }
                 }
-                
+
             }
-            p{
-                &.on{
-                    .menu{
+
+            p {
+                &.on {
+                    .menu {
                         display: none;
                     }
-                    .close{
+
+                    .close {
                         display: block;
                     }
                 }
-                .menu{}
-                .close{
+
+                .menu {}
+
+                .close {
                     display: none;
                 }
             }
@@ -90,6 +95,11 @@
             top: 50%;
             transform: translateY(-50%);
             gap: max(20px, 4rem);
+            .shop{
+                @include mobile{
+                    display: none;
+                }
+            }
 
             .cart {
                 display: flex;
@@ -107,32 +117,60 @@
         align-items: center;
         justify-content: center;
         transition: all cubic-bezier(0.075, 0.82, 0.165, 1);
-        &.on{
+
+        &.on {
             height: 425px;
         }
 
         .main-menu {
-            margin-block: max(40px,8rem) max(30px,4.5rem);
+            position: relative;
+            margin-block: 8rem 4.5rem;
             display: flex;
             white-space: nowrap;
             flex-wrap: wrap;
             width: 75rem;
+            @include mobile{
+            margin: 40px 0 130px;
+            width: 100vw;
+            }
+          &:hover li a{
+            filter: blur(4px);
+        }
 
             li {
                 overflow-y: clip;
-                &:first-child{
+
+                &:first-child {
                     font-style: italic;
                 }
-
                 a {
                     font-size: 72px;
                     letter-spacing: -.05em;
                     line-height: .8;
                     color: #000;
-                    text-transform: uppercase;
                     display: inline-block;
-                    padding-right: max(20px, 3rem);
-                    padding-bottom: max(15px, 2rem);
+                    padding-right:3rem;
+                    padding-bottom:2rem;
+                    text-transform: uppercase;
+                    text-shadow: 0px 0px 4px #fff;
+                    letter-spacing: 1px;
+                    -webkit-transition: all 0.2s ease-in-out;
+                    -moz-transition: all 0.2s ease-in-out;
+                    -o-transition: all 0.2s ease-in-out;
+                    -ms-transition: all 0.2s ease-in-out;
+                    transition: all 0.2s ease-in-out;
+                    @include mobile{
+                        font-size: 30px;
+                        padding-right:20px;
+                    padding-bottom:15px;
+                    }
+
+                    &:hover {
+                        color: #000;
+                        text-shadow: 0px 0px 1px #fff;
+                        filter: none;
+                    }
+                    
                 }
             }
 
@@ -146,7 +184,7 @@
             height: calc(100% - max(10px, 1.6rem)*2);
             aspect-ratio: .9371069182;
             object-fit: cover;
-            overflow: hidden; 
+            overflow: hidden;
             opacity: 0;
             pointer-events: none;
         }
@@ -154,31 +192,44 @@
         .nav-bottom {
             text-transform: uppercase;
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-template-columns: repeat(auto-fit, minmax(max(19rem, 175px), 1fr));
+            grid-template-columns: repeat(4, 1fr);         
             width: 75%;
             position: relative;
             grid-gap: 18px 30px;
             gap: 18px 30px;
             align-items: flex-end;
             white-space: nowrap;
-            li{
-                span{
-                    color:#9f9689;
+            @include mobile{
+            grid-template-columns: repeat(2, 1fr);
+            width: 100%;
+            }
+            li {
+                span {
+                    color: #9f9689;
+                    @include mobile{
+                        font-size: 12px;
+                    }
                 }
-                a{position: relative;
-                    &::after{
+
+                a {
+                    position: relative;
+                    @include mobile{
+                        font-size: 12px;
+                    }
+
+                    &::after {
                         content: '';
                         position: absolute;
                         left: 0;
                         bottom: 0;
                         height: 1px;
                         width: 0;
-                        background:#000;
+                        background: #000;
                         transition: all .3s;
 
                     }
-                    &:hover::after{
+
+                    &:hover::after {
                         width: 100%;
                     }
                 }
@@ -187,18 +238,19 @@
     }
 }
 
-.dim{
+.dim {
     position: fixed;
     top: 0;
     left: 0;
-    width:  100%;
+    width: 100%;
     height: 100dvh;
-    background: rgba(27,24,22,.6);
+    background: rgba(27, 24, 22, .6);
     backdrop-filter: blur(4.5px);
-    transform:translateY(-100vh) ;
+    transform: translateY(-100vh);
     z-index: 4;
     will-change: transform;
-    &.on{
+
+    &.on {
         transform: translateY(0);
     }
 }
