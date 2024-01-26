@@ -107,7 +107,7 @@
 
         .top {
             h2 {
-                font-size: 34vw;
+                font-size: 20vw;
                 white-space: nowrap;
                 font-weight: 400;
                 line-height: 1;
@@ -118,6 +118,20 @@
                 left: 50%;
                 transform: translateX(-50%);
                 color: #f4f0ea;
+                text-align: center;                
+            }
+            h3{
+                font-size: 10vw;
+                white-space: nowrap;
+                font-weight: 400;
+                line-height: 1;
+                letter-spacing: -.02em;
+                text-transform: uppercase;
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);
+                color: #f4f0ea;
+                text-align: center; 
             }
         }
 
@@ -125,6 +139,7 @@
             display: block;
             margin-left: 120px;
             margin-bottom: 96px;
+            margin-top: 96px;
             width: max(250px, 28.7rem);
 
             p {
@@ -143,11 +158,14 @@
                 text-transform: uppercase;
                 text-align: right;
                 line-height: 1.13;
-                font-size: 4.4rem;
+                font-size: 4.4rem !important;
                 letter-spacing: -0.05em;
                 margin: 0 auto;
                 color: #f4f0ea;
                 white-space: inherit;
+                span{
+                    display: block;
+                }
             }
 
 
@@ -376,11 +394,11 @@
     overflow: hidden;
     position: relative;
 
-
     .category-area {
         height: calc(100vh - max(4.9rem, 35px));
         display: flex;
         align-items: center;
+        box-sizing: border-box;
 
         .category-menu {
             display: flex;
@@ -389,8 +407,7 @@
             gap: max(150px, 25rem);
             width: -moz-fit-content;
             width: fit-content;
-            padding-inline: 50vw;
-            padding-right: 10rem;
+            padding: 0 10rem 0 15rem;
         }
 
         .item {
@@ -398,6 +415,7 @@
             align-items: center;
             gap: max(2rem, 15px);
             will-change: transform;
+            flex: 1;
 
             .left {
                 position: relative;
@@ -431,7 +449,7 @@
 
         .right {
             h4 {
-                font-size: max(50px, 6.6rem);
+                font-size: 2.5rem;
                 line-height: 113%;
                 letter-spacing: -.04em;
                 text-transform: uppercase;
@@ -458,9 +476,11 @@
         position: absolute;
         left: 0;
         top: 0;
+        width: 100vw;
+        height: 100vh;
 
-        img {
-            height: 100%;
+        video {
+            width: 100%;
             object-fit: cover;
         }
 
@@ -506,7 +526,8 @@
 .sc-arrivals {
     overflow: hidden;
     position: relative;
-
+    cursor: none;
+    
     .arrivals-area {
         overflow: hidden;
         width: 100%;
@@ -537,6 +558,7 @@
                 display: flex;
                 flex-direction: column;
                 padding: 15px;
+                cursor: none;
 
                 img {
                     max-width: 480px;
@@ -575,7 +597,7 @@
 }
 
 .sc-briefing {
-    padding: max(10px, 1.6rem);
+    padding: max(10px, 1.6rem);    
 
     .brif-area {
         display: flex;
@@ -585,10 +607,13 @@
     }
 
     .right {
-        width: 60%;
+        flex: 1;
         overflow: hidden;
 
-        img {}
+        img {
+            width: 100%;
+            object-fit: contain;
+        }
     }
 
     .left {
@@ -596,6 +621,7 @@
     height: fit-content;
     position: sticky;
     top: 6.5rem;
+    flex:1;
         p {
             font-weight: 500;
             line-height: 1.4;

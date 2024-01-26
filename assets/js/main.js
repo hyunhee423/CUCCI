@@ -73,7 +73,37 @@ infoCt.to('.sc-info .img-right',{ yPercent:-150 ,stagger:0.1},'a')
 
 
 
-gsap.set('.desc-img>img',{yPercent:-10, stagger:0.1})
+gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.matchMedia({
+  '(min-width:1024px)':function(){
+    // 가로 스크롤
+    let list = gsap.utils.toArray('.sc-category .category-menu .item');
+    let scollTween = gsap.to(list,{
+      xPercent: -100 * (list.length - 1), //원래 리시트의 갯수보다 1을 빼서 길이를 구한 후 에 가로로 이동
+      ease:'none',
+      scrollTrigger:{
+        trigger:'.sc-category',
+        pin:true,
+        scrub:1,
+        start:'center center',
+        end: '300%', //뷰포트 높이으ㅣ 300% -> 숫자가 클수록 느려진다.
+      }
+    })
+  }
+})
+
+gsap.to('.sc-category .item .bottom img',{
+  scrollTrigger: {
+    trigger: '.sc-category',
+    start: "0% 100%",
+    end: "300%",
+    scrub:1,
+  },
+  xPercent:-100
+})
+
+
+gsap.set('.desc-img>video',{yPercent:-10, stagger:0.1})
 
 descBg = gsap.timeline({
   scrollTrigger: {
@@ -85,7 +115,7 @@ descBg = gsap.timeline({
   },
   
 })
-descBg.to('.desc-img>img',{ yPercent:-30 ,stagger:0.1},'a')
+descBg.to('.desc-img>video',{ yPercent:-10 ,stagger:0.1},'a')
 
 
 
@@ -131,26 +161,6 @@ footBg = gsap.timeline({
 footBg.to('.footer .bg-area>img',{scale:1 ,stagger:0.1},'a')
 
 
-var swiper = new Swiper('.scroll-area', {
-  autoplay: {
-    delay: 0,
-    stopOnLastSlide: false,
-    disableOnInteraction: false,
-    mousewheel: true,
-
-},
-    speed:3000,
-    loop:true,
-    slidesPerView: "auto",
-    grabCursor: true,
-    paginationClickable: true,
-});
-
-  var swiper = new Swiper('.category-area', {
-    mousewheel: true,
-    slidesPerView: "auto",
-  });
-
   var swiper = new Swiper('.arrivals-cont', {
     // touchRatio:0,
     simulateTouch:false,
@@ -177,15 +187,26 @@ var swiper = new Swiper('.scroll-area', {
   })
 
 
-$(document).mousemove(function(e){
-  xVal = e.clientX;
-  yVal = e.clientY;
+  const specialSection = document.querySelector('.sc-arrivals');
+  const cursor = document.querySelector('.mqcsr');
 
-  gsap.to('.mqcsr',{
-    x:xVal,
-    y:yVal
-  })
-})
+  specialSection.addEventListener('mouseenter', function() {
+    cursor.style.display = 'block'; // 섹션에 진입하면 커서 표시
+  });
+
+  specialSection.addEventListener('mouseleave', function() {
+    cursor.style.display = 'none'; // 섹션을 나가면 커서 숨김
+  });
+
+  specialSection.addEventListener('mousemove', function(e) {
+    xVal = e.clientX;
+    yVal = e.clientY;
+
+    gsap.to(cursor, {
+      x: xVal,
+      y: yVal
+    });
+  });
 
 
   document.querySelectorAll('.footer .menu-list li>a').forEach(button => button.innerHTML = '<div><span>' + button.textContent.trim().split('').join('</span><span>') + '</span></div>');
